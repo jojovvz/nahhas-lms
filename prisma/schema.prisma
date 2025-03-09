@@ -1,11 +1,17 @@
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
 }
-// prisma/schema.prisma
+
+// env("DB_PROVIDER")
+// provider must be hardcoded here
+// https://github.com/prisma/prisma/issues/3834
+
 datasource db {
-  provider  = "postgresql"
-  url  	    = env("DATABASE_URL")
+  provider = "postgres" 
+  url      =  env("DATABASE_URL")
 }
+
 
 model Course {
   id          String    @id @default(uuid())
